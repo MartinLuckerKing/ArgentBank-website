@@ -2,10 +2,10 @@ import React from 'react'
 
 import "./style.css"
 
-export default function Button({action}) {
+export default function Button({container, action, buttonStyle}) {
   return (
-    <div>
-      <button className="sign-in-button">{action}</button>
+    <div className={container}>
+      <button className={buttonStyle}>{action}</button>
     </div>
   )
 }

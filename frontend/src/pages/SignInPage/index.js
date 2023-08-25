@@ -30,7 +30,7 @@ export default function SignInPage() {
                           idInput="remember-me"
                           text="Remember me" />
    
-              <ButtonSignIn action ="Sign In" />
+              <ButtonSignIn container="" buttonStyle="sign-in-button" action ="Sign In" />
               
             </form>
         </section>
