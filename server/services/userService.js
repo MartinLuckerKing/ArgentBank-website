@@ -48,6 +48,7 @@ module.exports.getUserProfile = async serviceData => {
 
 module.exports.loginUser = async serviceData => {
   try {
+    console.log("Received serviceData:", serviceData); 
     const user = await User.findOne({ email: serviceData.email })
 
     if (!user) {
