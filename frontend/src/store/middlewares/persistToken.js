@@ -1,6 +1,8 @@
-export const persistToken = store => next => action => {
+export const persistToken = () => next => action => {
     if (action.type === "LOGIN_SUCCESS") {
-        localStorage.setItem('TOKEN', action.token);
+        localStorage.setItem('authToken', action.payload.token);
+        localStorage.setItem('USERNAME', action.payload.userName);
+
     }
     return next(action);
 };

@@ -18,6 +18,7 @@ export function loginFailure(error) {
     }
 
 export function logout() {
+    localStorage.clear();
     return { type: LOGOUT };
 }
 
@@ -55,7 +56,7 @@ export function loginUser(credentials) {
             console.log(id);
             console.log(email);
 
-            dispatch(loginSuccess({ token, userName }));
+            dispatch(loginSuccess({ token, userName, email, id }));
         } catch (error) {
             dispatch(loginFailure(error.message));
         }
