@@ -2,6 +2,7 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
+    SET_TOKEN,
     LOGOUT
 } from './../actions/actionTypes';
 
@@ -15,6 +16,12 @@ const initialState = {
 
 function authReducer(state = initialState, action) {
     switch(action.type) {
+        case SET_TOKEN:
+            return {
+        ...state,
+        token: action.payload,
+        isAuthenticated: true // Assumant que la présence d'un token signifie une authentification
+    };
         case LOGIN_REQUEST:
             return {
                 ...state,
@@ -25,7 +32,7 @@ function authReducer(state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: true,
-                user: action.payload.user,
+                username: action.payload.username,
                 token: action.payload.token,
                 loading: false
             };

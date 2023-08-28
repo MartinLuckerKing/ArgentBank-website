@@ -26,25 +26,38 @@ export function loginUser(credentials) {
         dispatch(loginRequest());
 
         try {
-        const response = await fetch('http://localhost:3001/api/v1/user/login', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(credentials)
-        });
+            const response = await fetch('http://localhost:3001/api/v1/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(credentials)
+            });
 
-        if (!response.ok) {
-            throw new Error('Login failed');
-        }
+            const data = await response.json();
+            const { token } = data.body;
 
-        const data = await response.json();
-        const { token, user } = data;
-        dispatch(loginSuccess({ token, user }));
-        localStorage.setItem('authToken', token);
+            localStorage.setItem('authToken', token);
+
+            const userProfileResponse = await fetch('http://localhost:3001/api/v1/user/profile', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log(userProfileResponse)
+            
+            const userProfileData = await userProfileResponse.json();
+            console.log(userProfileData)
+            const { userName, email, id } = userProfileData.body; 
+            console.log(userName)
+            console.log(id);
+            console.log(email);
+
+            dispatch(loginSuccess({ token, userName }));
         } catch (error) {
-            console.log('non')
-        dispatch(loginFailure(error.message));
-    }
-};
+            dispatch(loginFailure(error.message));
+        }
+    };
 }
