@@ -1,15 +1,32 @@
 import React from 'react'
+import { useEffect } from 'react';
 import ButtonEditProfile from "./../../components/Button"
 import AccountInformation from '../../containers/AccountInformation'
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUserProfile } from './../../store/actions/fetchUserProfile';
 
 import "./style.css"
 
 export default function UserProfile() {
+
+  
+  const firstName = useSelector(state => state.profile.firstName);
+  const lastName = useSelector(state => state.profile.lastName);  
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [dispatch]);
+
+
+  
   return (
     <main className="main bg-dark">
         <div className="header">
-            <h1>Welcome back<br />Tony Jarvis!</h1>
-          <ButtonEditProfile buttonStyle="edit-button" action="Edit Name" />
+        <h1>Welcome back<br />{firstName} {lastName}</h1>
+        
+        <ButtonEditProfile buttonStyle="edit-button" action="Edit Name" />
       </div>
       <h2 className="sr-only">Accounts</h2>
 
@@ -18,7 +35,7 @@ export default function UserProfile() {
                           accountAmountDescription="Available Balance"/>
 
       <AccountInformation accountTitle="Argent Bank Savings (x6712)"
-                          accountAmount="$$10,928.42"
+                          accountAmount="$10,928.42"
                           accountAmountDescription="Available Balance"/>  
 
       <AccountInformation accountTitle="Argent Bank Credit Card (x8349)"

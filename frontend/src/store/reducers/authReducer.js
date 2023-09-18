@@ -28,7 +28,7 @@ function authReducer(state = initialState, action) {
     case SET_USERNAME:
       return {
         ...state,
-        username: action.payload,
+        user: action.payload,
       };
     case LOGIN_REQUEST:
       return {
@@ -40,7 +40,7 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        username: action.payload.username,
+        user: action.payload.userName,
         token: action.payload.token,
         loading: false,
       };

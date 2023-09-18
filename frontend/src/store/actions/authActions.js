@@ -51,12 +51,10 @@ export function loginUser(credentials) {
             
             const userProfileData = await userProfileResponse.json();
             console.log(userProfileData)
-            const { userName, email, id } = userProfileData.body; 
-            console.log(userName)
-            console.log(id);
-            console.log(email);
+            const { userName} = userProfileData.body; 
 
-            dispatch(loginSuccess({ token, userName, email, id }));
+
+            dispatch(loginSuccess({ token, userName }));
         } catch (error) {
             dispatch(loginFailure(error.message));
         }
