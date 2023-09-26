@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "../../../components/Logo";
 import HeaderNavLink from "../../../components/HeaderNavLink";
-import Button from "../../../components/Button";
 import { connect } from "react-redux";
 import "./style.css";
 import { useDispatch } from "react-redux";
@@ -18,14 +17,20 @@ function Header({ isAuthenticated }) {
     <nav className="main-nav">
       <Logo />
       {isAuthenticated ? (
-        <>
-          <HeaderNavLink text="Mon Profil" link="/profile" icon="fa fa-user" />
-          <Button
-            onClick={handleLogout}
-            action="Se déconnecter"
-            icon="fa fa-out"
-          />
-        </>
+        <div className="nav-button">
+          <>
+            <HeaderNavLink
+              text="Mon Profil"
+              link="/profile"
+              icon="fa fa-user"
+            />
+            <HeaderNavLink
+              onClick={handleLogout}
+              text="Sign out"
+              icon="fa-solid fa-arrow-right-from-bracket"
+            />
+          </>
+        </div>
       ) : (
         <>
           <HeaderNavLink

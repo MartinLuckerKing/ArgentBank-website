@@ -25,19 +25,20 @@ export const fetchUserProfile = () => {
       console.log(data);
       const firstName = data.body.firstName;
       const lastName = data.body.lastName;
-      const username = data.body.userName;
-      console.log(username);
-      console.log(data.body.firstName);
+      const userName = data.body.userName;
+
 
       dispatch({
         type: FETCH_USER_PROFILE_SUCCESS,
         payload: {
           firstName: firstName,
           lastName: lastName,
+          userName: userName,
         },
       });
     } catch (error) {
       dispatch({ type: FETCH_USER_PROFILE_FAILURE, error: error.toString() });
+      
     }
   };
 };

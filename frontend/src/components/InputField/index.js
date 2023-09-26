@@ -9,12 +9,13 @@ export default function InputField({
     idInput, 
     text,
     value,      
-    onChange}) {
+    onChange,
+    disabled}) {
 
   return (
     <div className={divClass}>
         <label htmlFor={labelFor}>{text}</label>
-        <input type={typeInput} id={idInput} value={value} onChange={onChange} />
+        <input type={typeInput} id={idInput} value={value} onChange={onChange} disabled={disabled} />
     </div>
   )
 }

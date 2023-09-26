@@ -2,7 +2,13 @@ import {
   UPDATE_USERNAME_REQUEST,
   UPDATE_USERNAME_SUCCESS,
   UPDATE_USERNAME_FAILURE,
+  SET_USERNAME,
 } from "./actionTypes";
+
+const updateStateUsername = (username) => ({
+  type: SET_USERNAME,
+  payload: username,
+});
 
 export const updateUsernameRequest = () => ({
   type: UPDATE_USERNAME_REQUEST,
@@ -44,6 +50,8 @@ export const updateUsername = (newUsername) => {
       localStorage.setItem("USERNAME", currentUser);
       console.log("Dispatching update with username:", data.body.userName);
       console.log(dispatch(updateUsernameSuccess(data.body.userName)));
+      console.log(dispatch(updateStateUsername(data.body.userName)))
+      console.log(dispatch(updateStateUsername(data.body.userName)))
     } catch (error) {
       dispatch(updateUsernameFailure(error.toString()));
     }

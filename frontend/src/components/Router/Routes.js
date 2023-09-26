@@ -16,7 +16,9 @@ export function AppRoutes() {
       <Route path="/profile" element={<PrivateRoute />}>
         <Route index element={<UserProfile />} />
       </Route>
-      <Route path="/edit" element={<EditUsername />} />
+      <Route path="/edit" element={<PrivateRoute />}>
+        <Route index element={<EditUsername />} />
+      </Route>
     </Routes>
   );
 }
