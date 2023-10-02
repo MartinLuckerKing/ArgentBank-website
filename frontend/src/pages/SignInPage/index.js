@@ -21,7 +21,6 @@ export default function SignInPage() {
     dispatch(loginUser(credentials));
   };
 
-
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
@@ -62,6 +61,7 @@ export default function SignInPage() {
             action="Sign In"
             onClick={handleSubmit}
           />
+          
         </form>
       </section>
     </main>

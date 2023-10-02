@@ -27,7 +27,7 @@ export const updateUsernameFailure = (error) => ({
 export const updateUsername = (newUsername) => {
   return async (dispatch) => {
     dispatch(updateUsernameRequest());
-    console.log(JSON.stringify({ userName: newUsername }));
+    JSON.stringify({ userName: newUsername });
     try {
       const response = await fetch(
         "http://localhost:3001/api/v1/user/profile",
@@ -46,12 +46,10 @@ export const updateUsername = (newUsername) => {
       }
 
       const data = await response.json();
-      const currentUser = data.body.userName;
-      localStorage.setItem("USERNAME", currentUser);
-      console.log("Dispatching update with username:", data.body.userName);
-      console.log(dispatch(updateUsernameSuccess(data.body.userName)));
-      console.log(dispatch(updateStateUsername(data.body.userName)))
-      console.log(dispatch(updateStateUsername(data.body.userName)))
+      
+      localStorage.setItem("USERNAME", data.body.userName);
+      dispatch(updateUsernameSuccess(data.body.userName));
+      dispatch(updateStateUsername(data.body.userName));
     } catch (error) {
       dispatch(updateUsernameFailure(error.toString()));
     }

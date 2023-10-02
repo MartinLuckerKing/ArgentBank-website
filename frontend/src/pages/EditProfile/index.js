@@ -6,11 +6,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUsername } from "./../../store/actions/updateUserName";
 
-import "./style.css"
+import "./style.css";
 
 function EditUsername() {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
+  
   const firstNameFromState = useSelector((state) => state.profile.firstName);
   const lastNameFromState = useSelector((state) => state.profile.lastName);
   const userNameFromState = useSelector((state) => state.profile.userName);
@@ -76,20 +77,20 @@ function EditUsername() {
             text="Username"
             onChange={handleInputChange}
           />
-        <div className="flex">
-          <Button
-            container=""
-            action="Edit"
-            buttonStyle="edit-button"
-            onClick={handleSubmit}
-          />
-          <Button
-            container=""
-            action="Cancel"
-            buttonStyle="edit-button"
-            link="/profile"
-          />
-        </div>
+          <div className="flex">
+            <Button
+              container=""
+              action="Edit"
+              buttonStyle="edit-button"
+              onClick={handleSubmit}
+            />
+            <Button
+              container=""
+              action="Cancel"
+              buttonStyle="edit-button"
+              link="/profile"
+            />
+          </div>
         </form>
       </section>
     </main>

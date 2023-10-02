@@ -5,6 +5,11 @@ import { connect } from "react-redux";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { logout } from "./../../../store/actions/authActions";
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab);
 
 function Header({ isAuthenticated }) {
   const dispatch = useDispatch();
@@ -22,12 +27,12 @@ function Header({ isAuthenticated }) {
             <HeaderNavLink
               text="Mon Profil"
               link="/profile"
-              icon="fa fa-user"
+              icon={faUser}
             />
             <HeaderNavLink
               onClick={handleLogout}
               text="Sign out"
-              icon="fa-solid fa-arrow-right-from-bracket"
+              icon={faRightFromBracket}
             />
           </>
         </div>

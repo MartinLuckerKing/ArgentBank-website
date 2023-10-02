@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import "./style.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./style.css";
 
 export default function HeaderNavLink({text, link, icon, onClick}) {
   return (
       <div>
           <Link to={link} onClick={onClick} className="main-nav-item">
-              <i className={icon}></i>
+              <FontAwesomeIcon icon={icon}/>
               {text}
           </Link>
       </div>

@@ -40,21 +40,7 @@ export function loginUser(credentials) {
 
             localStorage.setItem('authToken', token);
 
-            const userProfileResponse = await fetch('http://localhost:3001/api/v1/user/profile', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            console.log(userProfileResponse)
-            
-            const userProfileData = await userProfileResponse.json();
-            console.log(userProfileData)
-            const { userName} = userProfileData.body; 
-
-
-            dispatch(loginSuccess({ token, userName }));
+            dispatch(loginSuccess({ token }));
         } catch (error) {
             dispatch(loginFailure(error.message));
         }
