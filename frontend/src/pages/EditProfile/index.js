@@ -11,20 +11,19 @@ import "./style.css";
 function EditUsername() {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
-  
-  const firstNameFromState = useSelector((state) => state.profile.firstName);
-  const lastNameFromState = useSelector((state) => state.profile.lastName);
-  const userNameFromState = useSelector((state) => state.profile.userName);
 
-  const handleInputChange = (e) => {
-    setUsername(e.target.value);
-  };
   useEffect(() => {
     dispatch(fetchUserProfile());
   }, [dispatch]);
 
-  const { firstName, lastName } = useSelector((state) => state.profile || {});
-  console.log(firstName, lastName);
+  const firstNameFromState = useSelector((state) => state.profile.firstName) || "";
+  const lastNameFromState = useSelector((state) => state.profile.lastName) || "";
+  const userNameFromState = useSelector((state) => state.profile.userName) || "";
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUsername(username));
@@ -43,7 +42,6 @@ function EditUsername() {
             idInput="FirstName"
             text="Firstname"
             value={firstNameFromState}
-            onChange={handleInputChange}
             disabled={true}
           />
 
@@ -54,7 +52,6 @@ function EditUsername() {
             idInput="LastName"
             text="Lastname"
             value={lastNameFromState}
-            onChange={handleInputChange}
             disabled={true}
           />
 
@@ -65,7 +62,6 @@ function EditUsername() {
             idInput="UserName"
             text="Current username"
             value={userNameFromState}
-            onChange={handleInputChange}
             disabled={true}
           />
 
@@ -75,7 +71,7 @@ function EditUsername() {
             typeInput="text"
             idInput="Username"
             text="Username"
-            onChange={handleInputChange}
+            onChange={handleUsernameChange}
           />
           <div className="flex">
             <Button

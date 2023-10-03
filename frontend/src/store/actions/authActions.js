@@ -5,15 +5,15 @@ import {
     LOGOUT
 } from './actionTypes';
 
-export function loginRequest() {
+function loginRequest() {
     return { type: LOGIN_REQUEST };
 }
 
-export function loginSuccess(payload) {
+function loginSuccess(payload) {
     return { type: LOGIN_SUCCESS, payload };
 }
 
-export function loginFailure(error) {
+function loginFailure(error) {
     return { type: LOGIN_FAILURE, error };
     }
 

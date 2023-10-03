@@ -1,6 +1,7 @@
 import { FETCH_USER_PROFILE_FAILURE } from "../actions/actionTypes";
 import { FETCH_USER_PROFILE_SUCCESS } from "../actions/actionTypes";
 import {UPDATE_USERNAME_SUCCESS} from "../actions/actionTypes"
+import { LOGOUT } from "../actions/actionTypes";
 
 const initialState = {
   firstName: null,
@@ -11,6 +12,8 @@ const initialState = {
 
 function userProfileReducer(state = initialState, action) {
   switch (action.type) {
+    case LOGOUT:
+      return initialState;
     case UPDATE_USERNAME_SUCCESS:
       return {
         ...state,

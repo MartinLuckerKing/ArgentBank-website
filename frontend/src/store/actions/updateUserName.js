@@ -47,7 +47,6 @@ export const updateUsername = (newUsername) => {
 
       const data = await response.json();
       
-      localStorage.setItem("USERNAME", data.body.userName);
       dispatch(updateUsernameSuccess(data.body.userName));
       dispatch(updateStateUsername(data.body.userName));
     } catch (error) {

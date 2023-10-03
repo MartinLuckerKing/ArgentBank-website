@@ -1,9 +1,9 @@
 import React from 'react';
 import Banner from "./../../components/Banner"
 import TrustIcon from "./../../components/TrustIcon"
-import iconChat from "./../../img/icon-chat.png"
-import iconMoney from "./../../img/icon-money.png"
-import iconSecurity from "./../../img/icon-security.png"
+import iconChat from "./../../img/trustIcon/icon-chat.webp"
+import iconMoney from "./../../img/trustIcon/icon-money.webp"
+import iconSecurity from "./../../img/trustIcon/icon-security.webp"
 
 import "./style.css"
 

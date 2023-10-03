@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "./../../../store/actions/authActions";
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faRightFromBracket, faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab);
 
@@ -41,7 +41,7 @@ function Header({ isAuthenticated }) {
           <HeaderNavLink
             text="Sign In"
             link="/sign-in"
-            icon="fa fa-user-circle"
+            icon={faCircleUser}
           />
         </>
       )}

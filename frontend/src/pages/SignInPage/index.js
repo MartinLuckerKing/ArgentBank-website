@@ -27,6 +27,7 @@ export default function SignInPage() {
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
+          
           <InputField
             divClass="input-wrapper"
             labelFor="email"

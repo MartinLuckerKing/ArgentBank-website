@@ -13,7 +13,7 @@
   }
 
 .hero {
-    background-image: url('./../../img/bank-tree.jpeg');
+    background-image: url('./../../img/banner/bank-tree-responsive.webp');
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,6 +44,7 @@
 
 @media (min-width: 920px) {
     .hero {
+      background-image: url('./../../img/banner/bank-tree-full.webp');
       height: 400px;
       background-position: 0% 33%;
     }
