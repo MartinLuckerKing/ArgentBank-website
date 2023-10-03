@@ -22,7 +22,7 @@ export const fetchUserProfile = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      
       const firstName = data.body.firstName;
       const lastName = data.body.lastName;
       const userName = data.body.userName;
