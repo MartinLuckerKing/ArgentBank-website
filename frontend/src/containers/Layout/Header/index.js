@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../../components/Logo";
 import HeaderNavLink from "../../../components/HeaderNavLink";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
+import { fetchUserProfile } from "../../../store/actions/fetchUserProfile";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { logout } from "./../../../store/actions/authActions";
@@ -14,6 +15,12 @@ library.add(fab);
 function Header({ isAuthenticated }) {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [dispatch]);
+
+  const firstNameFromState = useSelector((state) => state.profile.firstName) || "";
+
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -25,7 +32,7 @@ function Header({ isAuthenticated }) {
         <div className="nav-button">
           <>
             <HeaderNavLink
-              text="Mon Profil"
+              text={firstNameFromState}
               link="/profile"
               icon={faUser}
             />
